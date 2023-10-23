@@ -19,6 +19,10 @@ RUN apt-get update && apt-get install -y \
 ############################## ROS 1 ##############################
 ###################################################################
 
+# Ros env variables
+ENV ROS_MASTER_URI=http://localhost:11311
+ENV ROS_HOSTNAME=localhost
+
 # Install ROS on Remote PC
 RUN wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_noetic.sh \
     chmod 755 ./install_ros_noetic.sh \
@@ -42,8 +46,12 @@ RUN mkdir -p ~/catkin_ws/src \
     git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git \
     cd ~/catkin_ws && catkin_make \
     echo "alias load_ros1='source ~/catkin_ws/devel/setup.bash'" >> ~/.bashrc \
-    source ~/.bashrc \
-    load_ros1
+
+RUN source ~/.bashrc && \
+    load_ros1 && \
+    cd ~/catkin_ws/src/ && \
+    git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && \
+    cd ~/catkin_ws && catkin_make
 
 
 ###################################################################
@@ -70,14 +78,13 @@ RUN mkdir -p ~/turtlebot3_ws/src \
     git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3.git \
     cd ~/turtlebot3_ws \
     colcon build --symlink-install \
-    echo "alias load_ros2='source ~/turtlebot3_ws/install/setup.bash'" >> ~/.bashrc \
-    source ~/.bashrc \
-    load_ros2
-    
+    echo "alias load_ros2='source ~/turtlebot3_ws/install/setup.bash'" >> ~/.bashrc 
 
 # Install Simulation Package
-RUN cd ~/turtlebot3_ws/src/ \
-    git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git \
+RUN source ~/.bashrc  &&\
+    load_ros2 &&\
+    cd ~/turtlebot3_ws/src/ && \
+    git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3_simulations.git && \
     cd ~/turtlebot3_ws && colcon build --symlink-install
 
 # Entrypoint
