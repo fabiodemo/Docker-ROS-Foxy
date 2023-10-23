@@ -41,7 +41,9 @@ RUN mkdir -p ~/catkin_ws/src \
     git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git \
     git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git \
     cd ~/catkin_ws && catkin_make \
-    echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+    echo "alias load_ros1='source ~/catkin_ws/devel/setup.bash'" >> ~/.bashrc \
+    source ~/.bashrc \
+    load_ros1
 
 
 ###################################################################
@@ -68,8 +70,9 @@ RUN mkdir -p ~/turtlebot3_ws/src \
     git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3.git \
     cd ~/turtlebot3_ws \
     colcon build --symlink-install \
-    echo "source ~/turtlebot3_ws/install/setup.bash" >> ~/.bashrc \
-    source ~/.bashrc
+    echo "alias load_ros2='source ~/turtlebot3_ws/install/setup.bash'" >> ~/.bashrc \
+    source ~/.bashrc \
+    load_ros2
     
 
 # Install Simulation Package
