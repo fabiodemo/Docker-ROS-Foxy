@@ -26,11 +26,7 @@ RUN apt-get install ros-foxy-gazebo-* \
     ros-foxy-navigation2 \
     ros-foxy-nav2-bringup
 
-# Install TurtleBot3 Packages
-RUN source ~/.bashrc \
-    sudo apt install ros-foxy-dynamixel-sdk
-
-# Building TurtleBot3 package from source
+# Building TurtleBot3 package from source (Install TurtleBot3 Packages)
 RUN mkdir -p ~/turtlebot3_ws/src \
     cd ~/turtlebot3_ws/src/ \
     git clone -b foxy-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git \
