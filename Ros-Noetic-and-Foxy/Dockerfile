@@ -14,6 +14,40 @@ RUN apt-get update && apt-get install -y \
     wget \
     && rm -rf /var/lib/apt/lists/*
 
+
+###################################################################
+############################## ROS 1 ##############################
+###################################################################
+
+# Install ROS on Remote PC
+RUN wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros_noetic.sh \
+    chmod 755 ./install_ros_noetic.sh \
+    bash ./install_ros_noetic.sh
+
+# Install Dependent ROS Packages
+RUN sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
+    ros-noetic-teleop-twist-keyboard ros-noetic-laser-proc \
+    ros-noetic-rgbd-launch ros-noetic-rosserial-arduino \
+    ros-noetic-rosserial-python ros-noetic-rosserial-client \
+    ros-noetic-rosserial-msgs ros-noetic-amcl ros-noetic-map-server \
+    ros-noetic-move-base ros-noetic-urdf ros-noetic-xacro \
+    ros-noetic-compressed-image-transport ros-noetic-rqt* ros-noetic-rviz \
+    ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
+
+# Building TurtleBot3 package from source.
+RUN mkdir -p ~/catkin_ws/src \
+    cd ~/catkin_ws/src/ \
+    git clone -b noetic-devel https://github.com/ROBOTIS-GIT/DynamixelSDK.git \
+    git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3_msgs.git \
+    git clone -b noetic-devel https://github.com/ROBOTIS-GIT/turtlebot3.git \
+    cd ~/catkin_ws && catkin_make \
+    echo "source ~/catkin_ws/devel/setup.bash" >> ~/.bashrc
+
+
+###################################################################
+############################## ROS 2 ##############################
+###################################################################
+
 # Install ROS 2 on Remote PC
 RUN wget https://raw.githubusercontent.com/ROBOTIS-GIT/robotis_tools/master/install_ros2_foxy.sh \
     chmod 755 ./install_ros2_foxy.sh \ 
@@ -34,7 +68,7 @@ RUN mkdir -p ~/turtlebot3_ws/src \
     git clone -b foxy-devel https://github.com/ROBOTIS-GIT/turtlebot3.git \
     cd ~/turtlebot3_ws \
     colcon build --symlink-install \
-    echo 'source ~/turtlebot3_ws/install/setup.bash' >> ~/.bashrc \
+    echo "source ~/turtlebot3_ws/install/setup.bash" >> ~/.bashrc \
     source ~/.bashrc
     
 
