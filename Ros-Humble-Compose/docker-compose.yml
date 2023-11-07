@@ -1,0 +1,21 @@
+version: '3'
+
+service:
+  ros-humble:
+    image: osrf/ros:humble-desktop
+    command: >
+      /bin/bash -c "source /opt/ros/humble/setup.bash &&
+      ros2 launch gazebo_ros gazebo.launch.py"
+    volumes:
+          - /tmp/.X11-unix:/tmp/.X11-unix
+          - ./:/root/dev_ws
+    environment:
+      - DISPLAY=${DISPLAY}
+      - QT_X11_NO_MITSHM=1
+    network_mode: host
+    security_opt:
+      - seccomp:unconfined
+    devices:
+      - "/dev/dri:/dev/dri"
+    privileged: true
+    restart: unless-stopped
