@@ -1,6 +1,6 @@
 version: '3'
 
-service:
+services:
   ros-humble:
     image: osrf/ros:humble-desktop
     command: >
