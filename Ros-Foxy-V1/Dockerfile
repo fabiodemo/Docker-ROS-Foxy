@@ -22,6 +22,7 @@ RUN wget -qO - https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | 
 # Instalar o ROS Foxy
 RUN apt-get update && apt-get install -y \
     ros-foxy-desktop \
+    ros-foxy-turtlebot3-gazebo \
     && rm -rf /var/lib/apt/lists/*
 
 # Configurar o ambiente ROS

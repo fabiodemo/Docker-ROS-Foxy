@@ -1,15 +1,19 @@
 version: '3'
+
 services:
   ros-foxy:
-    image: ros-foxy-gazebo # O nome da imagem que você construiu
+    image: ros-foxy-gazebo # Certifique-se de que esta imagem tem tudo instalado para o Turtlebot3 e o Gazebo
     container_name: meu_container_ros
     environment:
       - DISPLAY=${DISPLAY} # Substitua com o display correto, se necessário
+      - "TURTLEBOT3_MODEL=burger" 
     volumes:
-      - /tmp/.X11-unix:/tmp/.X11-unix # Para a interface gráfica, se necessário
+      - /tmp/.X11-unix:/tmp/.X11-unix # Para a interface gráfica
       - ./:/root/workspace # Mapeia o diretório atual para o workspace dentro do container
     network_mode: host
     security_opt:
-      - seccomp:unconfined # Opções de segurança, pode ser necessário para o Gazebo
-    privileged: true # Rodar o container em modo privilegiado para acesso completo ao host
-    command: bash -c "source /opt/ros/foxy/setup.bash && gazebo" # Comando inicial
+      - seccomp:unconfined # Pode ser necessário para o Gazebo
+    privileged: true # Modo privilegiado para acesso ao host
+    command: >
+      /bin/bash -c "source /opt/ros/foxy/setup.bash && 
+      ros2 launch turtlebot3_gazebo turtlebot3_dqn_stage1.launch.py"
