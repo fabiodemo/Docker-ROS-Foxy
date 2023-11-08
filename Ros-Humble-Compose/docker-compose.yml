@@ -10,8 +10,9 @@ services:
           - /tmp/.X11-unix:/tmp/.X11-unix
           - ./:/root/dev_ws
     environment:
-      - DISPLAY=${DISPLAY}
+      - DISPLAY=host.docker.internal:0
       - QT_X11_NO_MITSHM=1
+      - "TURTLEBOT3_MODEL=burger"
     network_mode: host
     security_opt:
       - seccomp:unconfined
