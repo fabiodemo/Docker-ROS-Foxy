@@ -54,12 +54,12 @@
       <plugin name="obstacles" filename="libobstacles.so"/>
       <allow_auto_disable>1</allow_auto_disable>
       <include>
-        <uri>model://turtlebot3_dqn_world/obstacles_stage6</uri>
+        <uri>model://turtlebot3_dqn_world/obstacles_stage4</uri>
       </include>
     </model>
          
     <include>
-      <pose>1.6 1.6 0.0 0.0 0.0 3</pose>
+      <pose>1.6 1.6 0.0 0.0 0.0 4</pose>
       <uri>model://turtlebot3_burger</uri>
     </include>
 
