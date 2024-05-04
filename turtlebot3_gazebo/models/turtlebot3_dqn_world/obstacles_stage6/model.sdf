@@ -1,0 +1,61 @@
+<sdf version='1.6'>
+  <model name='obstacles_stage3'>
+    <pose frame=''>-0.2 -0.2 0 0 0 0</pose> <!-- Ajuste a rotação geral do modelo, se necessário -->
+    <link name='obstacle'>
+      <!-- Parte superior do U (anteriormente inferior) -->
+      <collision name='u_obstacle_top'>
+        <pose>0 1.2 0.5 0 0 0</pose> <!-- Posicionada no topo entre as pernas verticais -->
+        <geometry>
+          <box>
+            <size>2.0 0.4 1</size> <!-- Tamanho conforme necessário -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name='u_obstacle_top'>
+        <pose>0 1.2 0.5 0 0 0</pose>
+        <geometry>
+          <box>
+            <size>2.0 0.4 1</size>
+          </box>
+        </geometry>
+      </visual>
+
+      <!-- Lado esquerdo do U -->
+      <collision name='u_obstacle_left'>
+        <pose>-1.0 0.6 0.5 0 0 π/2</pose> <!-- Rotacionado para ficar vertical -->
+        <geometry>
+          <box>
+            <size>0.4 1.2 1</size> <!-- Tamanho conforme necessário -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name='u_obstacle_left'>
+        <pose>-1.0 0.6 0.5 0 0 π/2</pose>
+        <geometry>
+          <box>
+            <size>0.4 1.2 1</size>
+          </box>
+        </geometry>
+      </visual>
+
+      <!-- Lado direito do U -->
+      <collision name='u_obstacle_right'>
+        <pose>1.0 0.6 0.5 0 0 π/2</pose> <!-- Rotacionado para ficar vertical -->
+        <geometry>
+          <box>
+            <size>0.4 1.2 1</size> <!-- Tamanho conforme necessário -->
+          </box>
+        </geometry>
+      </collision>
+      <visual name='u_obstacle_right'>
+        <pose>1.0 0.6 0.5 0 0 π/2</pose>
+        <geometry>
+          <box>
+            <size>0.4 1.2 1</size>
+          </box>
+        </geometry>
+      </visual>
+    </link>
+    <static>1</static>
+  </model>
+</sdf>

@@ -23,7 +23,7 @@
     </gui>
 
     <physics type="ode">
-      <real_time_update_rate>10000.0</real_time_update_rate>
+      <real_time_update_rate>1000.0</real_time_update_rate>
       <max_step_size>0.001</max_step_size>
       <real_time_factor>1</real_time_factor>
       <ode>
@@ -43,24 +43,8 @@
       </ode>
     </physics>
 
-    <model name="turtlebot3_dqn_world">
-      <static>1</static>
-      <include>
-        <uri>model://turtlebot3_dqn_world/model_stage_7</uri>
-      </include>
-    </model>
-
-    <model name="turtlebot3_dqn_obstacles">
-      <plugin name="obstacles" filename="libobstacles.so"/>
-      <allow_auto_disable>1</allow_auto_disable>
-      <include>
-        <uri>model://turtlebot3_dqn_world/obstacles_stage7</uri>
-      </include>
-    </model>
-         
     <include>
-      <pose>1.6 1.6 0.0 0.0 0.0 3</pose>
-      <uri>model://turtlebot3_burger</uri>
+      <uri>model://turtlebot3_waffle_pi</uri>
     </include>
 
   </world>
