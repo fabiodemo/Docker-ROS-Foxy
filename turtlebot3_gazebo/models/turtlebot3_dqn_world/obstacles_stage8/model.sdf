@@ -2,10 +2,65 @@
   <model name='obstacles_stage6'>
     <pose frame=''>0 0 0 0 0 0</pose>
 
-    <!-- Left U-shaped obstacle -->
-    <link name='obstacle_left'>
-      <pose frame=''>-0.75 0.5 0 0 0 2.35619</pose>
-      <collision name='u_obstacle_bottom_left'>
+<!-- Bottom U-shaped obstacle rotated to face the lower left corner -->
+<link name='obstacle_bottom'>
+  <pose frame=''>-0.55 0.5 0 0 0 0.7854</pose> <!-- cerca de 225 graus em radianos -->
+  <collision name='u_obstacle_bottom_bottom'>
+    <pose>0 0 0.75 0 0 0</pose>
+    <geometry>
+      <box>
+        <size>1.2 0.24 1.2</size>
+      </box>
+    </geometry>
+  </collision>
+  <visual name='u_obstacle_bottom_bottom'>
+    <pose>0 0 0.75 0 0 0</pose>
+    <geometry>
+      <box>
+        <size>1.2 0.24 1.2</size>
+      </box>
+    </geometry>
+  </visual>
+  <collision name='u_obstacle_bottom_left'>
+    <pose>-0.6 0.36 0.75 0 0 0</pose>
+    <geometry>
+      <box>
+        <size>0.24 0.72 1.2</size>
+      </box>
+    </geometry>
+  </collision>
+  <visual name='u_obstacle_bottom_left'>
+    <pose>-0.6 0.36 0.75 0 0 0</pose>
+    <geometry>
+      <box>
+        <size>0.24 0.72 1.2</size>
+      </box>
+    </geometry>
+  </visual>
+  <collision name='u_obstacle_top_bottom'>
+    <pose>0.6 0.36 0.75 0 0 0</pose>
+    <geometry>
+      <box>
+        <size>0.24 0.72 1.2</size>
+      </box>
+    </geometry>
+  </collision>
+  <visual name='u_obstacle_top_bottom'>
+    <pose>0.6 0.36 0.75 0 0 0</pose>
+    <geometry>
+      <box>
+        <size>0.24 0.72 1.2</size>
+      </box>
+    </geometry>
+  </visual>
+</link>
+
+
+
+    <!-- Top U-shaped obstacle rotated to face slightly to the upper left -->
+    <link name='obstacle_top'>
+      <pose frame=''>0.55 0.5 0 0 0 2.61799</pose> <!-- cerca de 150 graus em radianos -->
+      <collision name='u_obstacle_bottom_top'>
         <pose>0 0 0.75 0 0 0</pose>
         <geometry>
           <box>
@@ -13,7 +68,7 @@
           </box>
         </geometry>
       </collision>
-      <visual name='u_obstacle_bottom_left'>
+      <visual name='u_obstacle_bottom_top'>
         <pose>0 0 0.75 0 0 0</pose>
         <geometry>
           <box>
@@ -21,32 +76,32 @@
           </box>
         </geometry>
       </visual>
-      <collision name='u_obstacle_left_left'>
-        <pose>-0.6 0.36 0.75 0 0 0</pose>
+      <collision name='u_obstacle_left_top'>
+        <pose>0.6 -0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>0.24 0.72 1.2</size>
           </box>
         </geometry>
       </collision>
-      <visual name='u_obstacle_left_left'>
-        <pose>-0.6 0.36 0.75 0 0 0</pose>
+      <visual name='u_obstacle_left_top'>
+        <pose>0.6 -0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>0.24 0.72 1.2</size>
           </box>
         </geometry>
       </visual>
-      <collision name='u_obstacle_right_left'>
-        <pose>0.6 0.36 0.75 0 0 0</pose>
+      <collision name='u_obstacle_top_top'>
+        <pose>-0.6 -0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>0.24 0.72 1.2</size>
           </box>
         </geometry>
       </collision>
-      <visual name='u_obstacle_right_left'>
-        <pose>0.6 0.36 0.75 0 0 0</pose>
+      <visual name='u_obstacle_top_top'>
+        <pose>-0.6 -0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>0.24 0.72 1.2</size>
@@ -55,9 +110,10 @@
       </visual>
     </link>
 
-    <!-- Right U-shaped obstacle -->
+
+    <!-- Central U-shaped obstacle, rotated 180 degrees -->
     <link name='obstacle_right'>
-      <pose frame=''>0.75 0.5 0 0 0 -2.35619</pose>
+      <pose frame=''>0 -0.75 0 0 0 3.14159</pose>
       <collision name='u_obstacle_bottom_right'>
         <pose>0 0 0.75 0 0 0</pose>
         <geometry>
@@ -75,7 +131,7 @@
         </geometry>
       </visual>
       <collision name='u_obstacle_left_right'>
-        <pose>0.6 -0.36 0.75 0 0 0</pose>
+        <pose>-0.6 0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
             <size>0.24 0.72 1.2</size>
@@ -83,59 +139,6 @@
         </geometry>
       </collision>
       <visual name='u_obstacle_left_right'>
-        <pose>0.6 -0.36 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.24 0.72 1.2</size>
-          </box>
-        </geometry>
-      </visual>
-      <collision name='u_obstacle_right_right'>
-        <pose>-0.6 -0.36 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.24 0.72 1.2</size>
-          </box>
-        </geometry>
-      </collision>
-      <visual name='u_obstacle_right_right'>
-        <pose>-0.6 -0.36 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.24 0.72 1.2</size>
-          </box>
-        </geometry>
-      </visual>
-    </link>
-
-    <!-- Central U-shaped obstacle, rotated 180 degrees -->
-    <link name='obstacle_center'>
-      <pose frame=''>0 -0.75 0 0 0 3.14159</pose>
-      <collision name='u_obstacle_bottom_center'>
-        <pose>0 0 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>1.2 0.24 1.2</size>
-          </box>
-        </geometry>
-      </collision>
-      <visual name='u_obstacle_bottom_center'>
-        <pose>0 0 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>1.2 0.24 1.2</size>
-          </box>
-        </geometry>
-      </visual>
-      <collision name='u_obstacle_left_center'>
-        <pose>-0.6 0.36 0.75 0 0 0</pose>
-        <geometry>
-          <box>
-            <size>0.24 0.72 1.2</size>
-          </box>
-        </geometry>
-      </collision>
-      <visual name='u_obstacle_left_center'>
         <pose>-0.6 0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
@@ -143,7 +146,7 @@
           </box>
         </geometry>
       </visual>
-      <collision name='u_obstacle_right_center'>
+      <collision name='u_obstacle_top_right'>
         <pose>0.6 0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
@@ -151,7 +154,7 @@
           </box>
         </geometry>
       </collision>
-      <visual name='u_obstacle_right_center'>
+      <visual name='u_obstacle_top_right'>
         <pose>0.6 0.36 0.75 0 0 0</pose>
         <geometry>
           <box>
